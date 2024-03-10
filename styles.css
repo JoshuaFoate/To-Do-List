@@ -1,0 +1,69 @@
+/* #content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+} */
+
+.to-do-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+button {
+    padding-bottom: 20px;
+    border: none;
+    background: none;
+}
+
+button:hover {
+    color: rgb(235, 89, 89);
+}
+
+.to-do-list-title {
+    margin-bottom: 10px;
+    border: none;
+    background: none;
+    font-size: 30px;
+    font-weight: bold;
+    outline: none;
+}
+
+.to-do-list-title:hover {
+    border-style: solid;
+    border-color: lightgrey;
+}
+
+.to-do-list-title:focus {
+    border-style: solid;
+    border-color: grey;
+}
+
+.task {
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.task:hover {
+    border-style: solid;
+    border-color: lightgrey;
+}
+
+.task:focus {
+    border-style: solid;
+    border-color: grey;
+}
+
+.task-container {
+    margin: 10px;
+    border-style: solid;
+    border-color: lightgrey;
+}
+
+.task-container:focus {
+    border-style: solid;
+    border-color: grey;
+}
