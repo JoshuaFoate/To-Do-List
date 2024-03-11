@@ -135,9 +135,18 @@ function createTaskForm(toDoListContainer, thisTaskButton) {
     titleInput.addEventListener('input', function() {
         if (titleInput.value.trim() !== '') {
             submitButton.disabled = false;
+            submitImg.addEventListener('mouseover', () => {
+                submitImg.style.backgroundColor = 'lightgrey';
+            });
+            submitImg.addEventListener('mouseout', () => {
+                submitImg.style.backgroundColor = '';
+            });
             submitImg.style.opacity = 1.0;
         }
         else {
+            submitImg.addEventListener('mouseover', () => {
+                submitImg.style.backgroundColor = '';
+            });
             submitButton.disabled = true;
             submitImg.style.opacity = 0.5;
         }

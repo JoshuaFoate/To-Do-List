@@ -73,8 +73,15 @@ button:hover {
 
 #send-img {
     width: 20px;
+    padding: 3px;
+    border-radius: 25px;
 }
 
 .exit-img {
     width: 25px;
+    border-radius: 25px;
+}
+
+.exit-img:hover {
+    background-color: lightgrey;
 }
