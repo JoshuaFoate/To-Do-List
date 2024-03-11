@@ -85,11 +85,19 @@ function addTask(toDoListContainer, thisTaskButton, title, dueDate, priority, de
     newDescription.classList.add('task-description');
     newDescription.value = description;
 
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-todo-button');
+    deleteButton.innerHTML = '<img src="./imgs/exit-form.png" class="exit-img">';
+    deleteButton.addEventListener('click', function() {
+        container.remove();
+    })
+
     container.appendChild(checkBox);
     container.appendChild(newTitle);
     container.appendChild(newDate);
     container.appendChild(newPriority);
     container.appendChild(newDescription);
+    container.appendChild(deleteButton);
     thisTaskButton.style.display = 'block';
     toDoListContainer.insertBefore(container, thisTaskButton);
 
@@ -114,7 +122,7 @@ function createTaskForm(toDoListContainer, thisTaskButton) {
         <label for="description">Description:</label>
         <input type="text" id="description" name="description"><br>
         <button type="submit" id="form-button"><img src="./imgs/send.png" id="send-img"></button>
-        <button id="exit-form-button"><img src="./imgs/exit-form.png" id="exit-img"></button>
+        <button id="exit-form-button"><img src="./imgs/exit-form.png" class="exit-img"></button>
     `;
     toDoListContainer.insertBefore(taskForm, thisTaskButton);
 
