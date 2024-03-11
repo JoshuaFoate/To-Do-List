@@ -113,9 +113,8 @@ function createTaskForm(toDoListContainer, thisTaskButton) {
         </select><br>
         <label for="description">Description:</label>
         <input type="text" id="description" name="description"><br>
-        <button type="submit" id="form-button">
-            <img src="./imgs/send.png" id="send-img">
-        </button
+        <button type="submit" id="form-button"><img src="./imgs/send.png" id="send-img"></button>
+        <button id="exit-form-button"><img src="./imgs/exit-form.png" id="exit-img"></button>
     `;
     toDoListContainer.insertBefore(taskForm, thisTaskButton);
 
@@ -134,6 +133,12 @@ function createTaskForm(toDoListContainer, thisTaskButton) {
             submitButton.disabled = true;
             submitImg.style.opacity = 0.5;
         }
+    });
+
+    const exitButton = document.querySelector('#exit-form-button');
+    exitButton.addEventListener('click', function() {
+        taskForm.remove();
+        thisTaskButton.style.display = 'block';
     });
 
     taskForm.addEventListener('submit', function(event) {
