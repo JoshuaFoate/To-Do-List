@@ -75,11 +75,11 @@ function addTask(toDoListContainer, thisTaskButton, title, dueDate, priority, de
 
     const newDate = document.createElement('input');
     newDate.classList.add('task-date');
-    newDate.value = dueDate;
+    newDate.value = 'Due: ' + dueDate;
 
     const newPriority = document.createElement('input');
     newPriority.classList.add('task-priority');
-    newPriority.value = priority;
+    newPriority.value = 'Priority: ' + priority;
 
     const newDescription = document.createElement('input');
     newDescription.classList.add('task-description');

@@ -85,3 +85,7 @@ button:hover {
 .exit-img:hover {
     background-color: lightgrey;
 }
+
+input {
+    width: fit-content;
+}
