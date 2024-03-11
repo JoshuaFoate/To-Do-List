@@ -59,11 +59,18 @@ button:hover {
 
 .task-container {
     margin: 10px;
-    border-style: solid;
+    border-bottom-style: solid;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
     border-color: lightgrey;
 }
 
 .task-container:focus {
     border-style: solid;
     border-color: grey;
+}
+
+#send-img {
+    width: 20px;
 }
