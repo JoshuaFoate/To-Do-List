@@ -1,15 +1,23 @@
-/* #content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-} */
+#content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 1fr;
+    grid-auto-flow: dense;
+    height: 100vh;
+    overflow: auto;
+}
 
 .to-do-list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 10px;
+    width: 250px;
+}
+
+.todo-container {
+    display: flex;
+    align-items: flex-start;
 }
 
 button {
@@ -20,6 +28,7 @@ button {
 
 button:hover {
     color: rgb(235, 89, 89);
+    cursor: pointer;
 }
 
 .to-do-list-title {
@@ -58,7 +67,12 @@ button:hover {
 }
 
 .task-container {
-    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin-top: 13px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
     border-bottom-style: solid;
     border-left-style: none;
     border-right-style: none;
@@ -88,4 +102,26 @@ button:hover {
 
 input {
     width: fit-content;
+}
+
+.task-title, .task-date, .task-priority, .task-description {
+    border: none;
+    padding: 2px;
+    margin: 0px;
+}
+
+.task-date, .task-priority {
+    font-size: 11px;
+    color: grey;
+}
+
+.checkbox {
+    margin-top: 15px;
+    padding: 8px;
+    border: solid;
+    border-radius: 100%;
+}
+
+.task-button {
+    margin-top: 10px;
 }

@@ -63,43 +63,59 @@ function addListButton() {
 
 // The logic behind the add task button
 function addTask(toDoListContainer, thisTaskButton, title, dueDate, priority, description) {
-    const container = document.createElement('div');
+    const toDoContainer = document.createElement('div');
+    toDoContainer.classList.add('todo-container');
+
+    const container = document.createElement('button');
     container.classList.add('task-container');
+    container.addEventListener('click', function() {
+        if (container.contains(newDescription)) {
+            newDescription.remove();
+        }
+        else {
+            container.appendChild(newDescription);
+        }
+    });
 
-    const checkBox = document.createElement('input');
-    checkBox.setAttribute("type", "checkbox");
+    const checkBox = document.createElement('button');
+    checkBox.classList.add('checkbox');
+    checkBox.addEventListener('click', function() {
+        toDoContainer.remove();
+    });
+    checkBox.addEventListener('mouseover', function() {
+        checkBox.style.color = 'black';
+        checkBox.style.backgroundColor = 'rgb(145, 144, 144)';
+    });
+    checkBox.addEventListener('mouseout', function() {
+        checkBoxColor(checkBox, priority);
+    });
 
-    const newTitle = document.createElement('input');
+    const newTitle = document.createElement('p');
     newTitle.classList.add('task-title');
-    newTitle.value = title;
+    newTitle.textContent = title;
 
-    const newDate = document.createElement('input');
+    const newDate = document.createElement('p');
     newDate.classList.add('task-date');
-    newDate.value = 'Due: ' + dueDate;
+    newDate.textContent = dueDate;
 
-    const newPriority = document.createElement('input');
+    const newPriority = document.createElement('p');
     newPriority.classList.add('task-priority');
-    newPriority.value = 'Priority: ' + priority;
 
-    const newDescription = document.createElement('input');
+    const newDescription = document.createElement('p');
     newDescription.classList.add('task-description');
-    newDescription.value = description;
+    newDescription.textContent = description;
 
-    const deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-todo-button');
-    deleteButton.innerHTML = '<img src="./imgs/exit-form.png" class="exit-img">';
-    deleteButton.addEventListener('click', function() {
-        container.remove();
-    })
-
-    container.appendChild(checkBox);
     container.appendChild(newTitle);
-    container.appendChild(newDate);
-    container.appendChild(newPriority);
-    container.appendChild(newDescription);
-    container.appendChild(deleteButton);
+    if (dueDate) {
+        container.appendChild(newDate);
+    }
+    toDoContainer.appendChild(checkBox);
+    toDoContainer.appendChild(container);
+    toDoListContainer.insertBefore(toDoContainer, thisTaskButton);
+
+    checkBoxColor(checkBox, priority);
+
     thisTaskButton.style.display = 'block';
-    toDoListContainer.insertBefore(container, thisTaskButton);
 
     const todo = createToDo(title, description, dueDate, priority);
     todos.push(todo);
@@ -109,18 +125,19 @@ function addTask(toDoListContainer, thisTaskButton, title, dueDate, priority, de
 function createTaskForm(toDoListContainer, thisTaskButton) {
     const taskForm = document.createElement('form');
     taskForm.innerHTML = `
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title"><br>
-        <label for="due-date">Due Date:</label>
+        <label for="title"></label>
+        <input type="text" id="title" name="title" placeholder="Title"><br>
+        <label for="description"></label>
+        <input type="text" id="description" name="description" placeholder="Description"><br>
+        <label for="due-date"></label>
         <input type="date" id="due-date" name="due-date"><br>
-        <label for="priority">Priority:</label>
+        <label for="priority"></label>
         <select id="priority" name="priority">
+            <option style="display: none;" value="" selected>Priority...</option>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
         </select><br>
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description"><br>
         <button type="submit" id="form-button"><img src="./imgs/send.png" id="send-img"></button>
         <button id="exit-form-button"><img src="./imgs/exit-form.png" class="exit-img"></button>
     `;
@@ -173,6 +190,26 @@ function taskFormSubmitButton(toDoListContainer, thisTaskButton, thisTaskForm) {
     const description = formData.get("description");
     addTask(toDoListContainer, thisTaskButton, title, dueDate, priority, description);
     thisTaskForm.remove();
+}
+
+// Function for checkBox logic; color and mouseover.
+function checkBoxColor(checkBox, priority) {
+    if (priority == 'High') {
+        checkBox.style.color = 'red';
+        checkBox.style.backgroundColor = 'rgb(255, 205, 204)';
+    }
+    else if (priority == 'Medium') {
+        checkBox.style.color = 'blue';
+        checkBox.style.backgroundColor = 'rgb(190, 209, 250)';
+    }
+    else if (priority == 'Low') {
+        checkBox.style.color = 'green';
+        checkBox.style.backgroundColor = 'rgb(202, 252, 214)';
+    }
+    else {
+        checkBox.style.color = 'black';
+        checkBox.style.backgroundColor = 'white';
+    }
 }
 
 //
