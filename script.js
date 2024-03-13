@@ -6,8 +6,8 @@ function initialToDoPage () {
 }
 
 // Function to create to-do objects
-function createToDo (title, description, dueDate, priority) {
-    return {title, description, dueDate, priority};
+function createToDo (title, dueDate, priority, description) {
+    return {title, dueDate, priority, description};
 }
 
 // Function to create a new to-do list
@@ -117,8 +117,12 @@ function addTask(toDoListContainer, thisTaskButton, title, dueDate, priority, de
 
     thisTaskButton.style.display = 'block';
 
-    const todo = createToDo(title, description, dueDate, priority);
+    const todo = createToDo(title, dueDate, priority, description);
     todos.push(todo);
+
+    console.log(localStorage);
+
+    saveToDo(title, dueDate, priority, description);
 }
 
 // Function to create a form for task information
@@ -212,5 +216,4 @@ function checkBoxColor(checkBox, priority) {
     }
 }
 
-//
 initialToDoPage();
