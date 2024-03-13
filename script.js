@@ -121,8 +121,6 @@ function addTask(toDoListContainer, thisTaskButton, title, dueDate, priority, de
     todos.push(todo);
 
     console.log(localStorage);
-
-    saveToDo(title, dueDate, priority, description);
 }
 
 // Function to create a form for task information
